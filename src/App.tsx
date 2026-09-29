@@ -1,4 +1,4 @@
-  import './App.css'
+import './App.css'
 
 function App() {
   return (
@@ -86,6 +86,8 @@ function SignUpForm() {
       <input id="sign-up-name" type="text" placeholder="Alex Morgan" />
       <label htmlFor="sign-up-email">Work email</label>
       <input id="sign-up-email" type="email" placeholder="you@company.com" />
+      <label htmlFor="sign-up-confirm-email">Confirm work email</label>
+      <input id="sign-up-confirm-email" type="email" placeholder="you@company.com" />
       <label htmlFor="sign-up-password">Password</label>
       <input id="sign-up-password" type="password" placeholder="Create a password" />
       <p className="field-hint">Use 8 or more characters with a mix of letters and numbers.</p>

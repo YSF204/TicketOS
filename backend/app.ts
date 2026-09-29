@@ -1,6 +1,4 @@
 import express from "express";
-import { sql } from "drizzle-orm";
-import db from "./db";
 import { Authrouter } from "./modules/auth/auth.routes";
 import { HealthRouter } from "./modules/health/health.router";
 

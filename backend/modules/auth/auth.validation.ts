@@ -1,28 +1,23 @@
-import { z } from "zod";
-import { User } from "../../types";
-
-export const UserSchema = z.object({
-    username: z.string().min(3).max(100),
-    password: z.string().min(6).max(100),
-    email: z.string().email(),
-    firstName: z.string().min(1).max(100),
-    lastName: z.string().min(1).max(100)
-});
+import type { User, LoginInput } from "../../types.d.ts";
+import { RegistrationSchema } from "../../schema/registration.schema.ts";
+import { LoginSchema } from "../../schema/login.schema.ts";
 
 
-export const validateInputs = (user: User) => {
-    const result = UserSchema.safeParse(user);
+export const validateInputs = (input: unknown): User => {
+    const result = RegistrationSchema.safeParse(input);
     if (!result.success) {
-        return {
-            success: false,
-            error: result.error
-        }
-
-    } else {
-        return {
-            success: true,
-            data: result.data
-        }
+        throw result.error;
     }
 
-}
+    const { confirmEmail: _confirmEmail, ...user } = result.data;
+    return user;
+};
+
+export const validateLoginInputs = (input: unknown): LoginInput => {
+    const result = LoginSchema.safeParse(input);
+    if (!result.success) {
+        throw result.error;
+    }
+
+    return result.data;
+};
