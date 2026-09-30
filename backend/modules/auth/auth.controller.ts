@@ -70,7 +70,12 @@ export const Refresh = async (req: Request, res: Response) => {
 };
 
 export const Logout = async (req: Request, res: Response) => {
-  await logout(getRefreshToken(req));
-  res.clearCookie(refreshCookie, cookieOptions);
+  try {
+    await logout(getRefreshToken(req));
+  } finally {
+    res.clearCookie(refreshCookie, cookieOptions);
+  }
   return res.status(204).end();
+
+
 };

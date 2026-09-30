@@ -3,6 +3,7 @@ import { createHash, randomBytes } from "node:crypto";
 import jwt from "jsonwebtoken";
 import type { LoginInput } from "../../schema/login.schema.ts";
 import type { RegistrationInput } from "../../schema/registration.schema.ts";
+import { getDatabaseErrorCode } from "../../db/error.ts";
 import {
   createUser,
   findUserByEmail,
@@ -14,6 +15,8 @@ import {
 const refreshLifetime = 30 * 24 * 60 * 60 * 1000;
 const hashToken = (token: string) => createHash("sha256").update(token).digest("hex");
 const newRefreshToken = () => randomBytes(32).toString("base64url");
+const dummyPasswordHash = "$argon2id$v=19$m=65536,p=4,t=3$Q7q9aqzaqocSnnKIYmIXPw$andhubJnr56gNX+UbM57QjciIghSpgmQbvaunGV+9kc";
+const dummyHash = argon2.hash("dummy-password-for-timing");
 
 export class AuthError extends Error {
   constructor(message: string, readonly status: number) {
@@ -41,17 +44,26 @@ export const register = async (user: RegistrationInput) => {
     const created = await createUser(user, await argon2.hash(user.password));
     return safeUser(created);
   } catch (error) {
-    if ((error as { code?: string }).code === "23505") {
+
+    const databaseError = error as { code?: string; cause?: { code?: string } };
+    if (databaseError.code === "23505" || databaseError.cause?.code === "23505") {
       throw new AuthError("User already exists", 409);
     }
-    throw error;
   }
+
 };
 
 export const login = async (credentials: LoginInput) => {
   const secret = jwtSecret();
   const user = await findUserByEmail(credentials.email);
-  if (!user || !(await argon2.verify(user.passwordHash, credentials.password))) {
+  const passwordMatches = await argon2.verify(
+    user?.passwordHash ?? dummyPasswordHash,
+    credentials.password,
+  );
+
+  const valid = await argon2.verify(user?.passwordHash ?? await dummyHash, credentials.password);
+
+  if (!user || !valid) {
     throw new AuthError("Invalid email or password", 401);
   }
 

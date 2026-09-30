@@ -14,7 +14,7 @@ export const createWorkspaceController = async (req: Request, res: Response) => 
         const workspace = await createWorkspace({ ...input.data, ownerId });
         return res.status(201).json(workspace);
     } catch (error) {
-      if (error instanceof WorkspaceError) return res.status(error.status).json({ message: error.message });
+        if (error instanceof WorkspaceError) return res.status(error.status).json({ message: error.message });
         throw error;
     }
 };
@@ -37,9 +37,9 @@ export const addWorkspaceMemberController = async (req: Request, res: Response) 
             workspaceId: workspaceId.data,
             requesterId,
         });
-      return res.status(201).json(result);
+        return res.status(201).json(result);
     } catch (error) {
-      if (error instanceof WorkspaceError) return res.status(error.status).json({ message: error.message });
+        if (error instanceof WorkspaceError) return res.status(error.status).json({ message: error.message });
         throw error;
     }
 };

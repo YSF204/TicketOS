@@ -1,4 +1,5 @@
 import { addWorkspaceMember as addMember, createWorkspaceWithOwner } from "./workspace.repository.ts";
+import { getDatabaseErrorCode } from "../../db/error.ts";
 
 export class WorkspaceError extends Error {
   constructor(message: string, readonly status: number) {
@@ -8,7 +9,7 @@ export class WorkspaceError extends Error {
 }
 
 const translateDatabaseError = (error: unknown, duplicateMessage: string): never => {
-  const code = (error as { code?: string }).code;
+  const code = getDatabaseErrorCode(error);
   if (code === "23505") throw new WorkspaceError(duplicateMessage, 409);
   if (code === "23503") throw new WorkspaceError("User not found", 404);
   throw error;

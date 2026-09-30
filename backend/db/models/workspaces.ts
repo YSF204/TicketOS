@@ -7,5 +7,5 @@ export const workspaces = pgTable("workspaces", {
   slug: varchar("slug", { length: 150 }).notNull().unique(),
   ownerId: uuid("owner_id").notNull().references(() => users.id),
   createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull().$onUpdate(() => new Date()),
 });
