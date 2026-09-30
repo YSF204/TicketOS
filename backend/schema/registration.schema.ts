@@ -10,3 +10,5 @@ export const RegistrationSchema = z.object({
     message: "Email addresses do not match",
     path: ["confirmEmail"],
 });
+
+export type RegistrationInput = Omit<z.output<typeof RegistrationSchema>, "confirmEmail">;

@@ -1,9 +1,10 @@
-import type { User, LoginInput } from "../../types.d.ts";
 import { RegistrationSchema } from "../../schema/registration.schema.ts";
 import { LoginSchema } from "../../schema/login.schema.ts";
+import type { LoginInput } from "../../schema/login.schema.ts";
+import type { RegistrationInput } from "../../schema/registration.schema.ts";
 
 
-export const validateInputs = (input: unknown): User => {
+export const validateInputs = (input: unknown): RegistrationInput => {
     const result = RegistrationSchema.safeParse(input);
     if (!result.success) {
         throw result.error;
