@@ -22,6 +22,8 @@ export const users = pgTable("users", {
   lastName: varchar("last_name", { length: 100 })
     .notNull(),
 
+  avatarUrl: varchar("avatar_url", { length: 2048 }),
+
   emailVerified: boolean("email_verified")
     .default(false)
     .notNull(),
