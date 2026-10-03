@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 import { validateInputs, validateLoginInputs } from "./auth.validation.ts";
-import { AuthError, login, logout, refresh, register } from "./auth.service.ts";
+import { AuthError, login, logout, refresh, register, verifyEmail } from "./auth.service.ts";
 
 const refreshCookie = "refreshToken";
 const refreshLifetime = 30 * 24 * 60 * 60 * 1000;
@@ -78,4 +78,18 @@ export const Logout = async (req: Request, res: Response) => {
   return res.status(204).end();
 
 
+};
+
+export const VerifyEmail = async (req: Request, res: Response) => {
+  const token = req.body?.token;
+  if (typeof token !== "string" || !token) {
+    return res.status(400).json({ message: "Verification token is required" });
+  }
+
+  try {
+    await verifyEmail(token);
+    return res.json({ message: "Email verified" });
+  } catch (error) {
+    return sendError(res, error);
+  }
 };

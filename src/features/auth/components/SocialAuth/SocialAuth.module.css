@@ -1,0 +1,33 @@
+.social {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.providers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: var(--space-3);
+}
+
+.provider {
+  font-size: 0.875rem;
+  font-weight: 550;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  color: var(--ink-meta);
+  font-size: var(--text-xs);
+  white-space: nowrap;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}

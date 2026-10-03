@@ -1,0 +1,47 @@
+.section {
+  padding-top: var(--section-space);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.footnote {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2) var(--space-3);
+  margin-top: var(--space-8);
+  color: var(--ink-meta);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.footnoteIcons {
+  display: inline-flex;
+  gap: var(--space-2);
+  color: var(--ink);
+}
+
+@media (min-width: 48rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+
+  .narrow {
+    grid-column: span 5;
+  }
+
+  .wide {
+    grid-column: span 7;
+  }
+}

@@ -1,0 +1,357 @@
+/* Shared styles for the dashboard widgets inside the product preview. */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: 0.875rem;
+  background: var(--paper);
+  box-shadow: var(--lift-1);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-height: 1.5rem;
+  margin-bottom: var(--space-3);
+}
+
+.title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.title svg {
+  color: var(--sticky-edge);
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--ink-meta);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+}
+
+.link {
+  color: var(--signal);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+}
+
+/* To-do list */
+.todoList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.todo {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  line-height: 1.45;
+}
+
+.checkbox {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 1px;
+  border: 1.5px solid var(--rule-strong);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  color: #fff;
+}
+
+.checked {
+  border-color: var(--signal);
+  background: var(--signal);
+}
+
+.todoDone {
+  color: var(--ink-faint);
+  text-decoration: line-through;
+  text-decoration-color: var(--rule-strong);
+}
+
+.todoTag {
+  margin-inline-start: 0.375rem;
+  vertical-align: 1px;
+}
+
+/* Time tracker */
+.tracker {
+  align-items: stretch;
+}
+
+.trackerBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+}
+
+.clock {
+  font-size: 1.75rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.session {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--done-ink);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+}
+
+.liveDot {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background: var(--done);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.control {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--paper-sunk);
+  color: var(--ink);
+}
+
+.stop {
+  background: var(--alert);
+  color: #fff;
+  box-shadow: 0 2px 6px rgb(225 29 72 / 0.3);
+}
+
+/* Activity overview */
+.activity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.statLabel {
+  color: var(--ink-meta);
+  font-size: 0.625rem;
+}
+
+.statValue {
+  font-size: var(--text-xs);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.toneSignal { color: var(--signal); }
+.toneSticky { color: var(--sticky-text); }
+
+.ringCaption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.ringCaption small {
+  color: var(--ink-meta);
+  font-size: 0.5625rem;
+  font-weight: 500;
+}
+
+/* Assigned tasks */
+.tabs {
+  display: flex;
+  gap: var(--space-3);
+  margin-inline: var(--space-3) auto;
+}
+
+.tab {
+  padding-bottom: 0.125rem;
+  border-bottom: 1.5px solid transparent;
+  color: var(--ink-meta);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+}
+
+.tabActive {
+  border-color: var(--signal);
+  color: var(--signal);
+  font-weight: 600;
+}
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.taskRow {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) 6rem 2.25rem auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0.625rem;
+  border-radius: 0.625rem;
+  background: var(--desk);
+}
+
+.taskIcon {
+  display: grid;
+  place-items: center;
+  width: 1.625rem;
+  height: 1.625rem;
+  border-radius: 0.4375rem;
+}
+
+.iconSticky { background: var(--sticky-wash); color: var(--sticky-text); }
+.iconDone { background: var(--done-wash); color: var(--done-ink); }
+.iconAlert { background: var(--alert-wash); color: var(--alert-ink); }
+
+.taskText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.taskTitle {
+  overflow: hidden;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ticketId {
+  color: var(--ink-faint);
+  font-size: 0.625rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.percent {
+  color: var(--ink-meta);
+  font-size: var(--text-2xs);
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Doc summary */
+.docCard {
+  border-color: var(--agent-edge);
+  background: linear-gradient(to bottom, var(--agent-wash), var(--paper) 70%);
+}
+
+.file {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.625rem;
+  border: 1px solid var(--rule);
+  border-radius: 0.625rem;
+  background: var(--paper);
+}
+
+.fileIcon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.4375rem;
+  background: var(--alert-wash);
+  color: var(--alert);
+}
+
+.fileText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.fileName {
+  overflow: hidden;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fileMeta {
+  color: var(--ink-meta);
+  font-size: 0.625rem;
+}
+
+.summary {
+  margin-top: 0.625rem;
+  padding: 0.125rem 0 0.125rem 0.625rem;
+  border-left: 2px solid var(--agent-edge);
+  color: var(--ink-soft);
+  font-size: var(--text-2xs);
+  line-height: 1.55;
+}
+
+.summary strong {
+  color: var(--agent-ink);
+  font-weight: 600;
+}
+
+.docFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-top: auto;
+  padding-top: var(--space-3);
+  color: var(--ink-meta);
+  font-size: var(--text-2xs);
+}
+
+.askButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  height: 1.625rem;
+  padding: 0 0.625rem;
+  border-radius: 0.4375rem;
+  background: var(--signal);
+  color: #fff;
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  box-shadow: var(--lift-primary);
+}

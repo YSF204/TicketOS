@@ -1,0 +1,120 @@
+.footer {
+  border-top: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.top {
+  display: grid;
+  gap: var(--space-10);
+  padding-block: var(--space-12);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.logoLink {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  border-radius: var(--radius);
+}
+
+.tagline {
+  max-width: 22rem;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-8) var(--space-6);
+}
+
+.columnTitle {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.25rem;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+  padding-block: var(--space-6);
+  border-top: 1px solid var(--rule);
+  color: var(--ink-meta);
+  font-size: var(--text-sm);
+}
+
+.note {
+  flex: 1;
+}
+
+.social {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.socialLink {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius);
+  color: var(--ink-meta);
+  transition-property: color, background-color;
+  transition-duration: var(--dur-fast);
+  transition-timing-function: var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    color: var(--ink);
+  }
+
+  .socialLink:hover {
+    background: var(--paper-sunk);
+    color: var(--ink);
+  }
+}
+
+@media (min-width: 48rem) {
+  .columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .top {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: var(--space-16);
+    padding-block: var(--space-16);
+  }
+
+  .note {
+    text-align: center;
+  }
+}

@@ -1,0 +1,73 @@
+.section {
+  padding-top: var(--section-space);
+}
+
+.title {
+  margin-bottom: var(--space-8);
+  color: var(--ink-meta);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* A ledger, not a row of floating numbers: hairlines between entries */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  border-block: 1px solid var(--rule);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6) var(--space-4);
+}
+
+.item:nth-child(even) {
+  border-left: 1px solid var(--rule);
+}
+
+.item:nth-child(n + 3) {
+  border-top: 1px solid var(--rule);
+}
+
+.value {
+  order: -1;
+  margin: 0;
+  font-size: clamp(1.875rem, 1.4rem + 1.6vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  margin-top: var(--space-3);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.detail {
+  margin: 0.125rem 0 0;
+  color: var(--ink-meta);
+  font-size: var(--text-sm);
+}
+
+@media (min-width: 48rem) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .item {
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .item:nth-child(n + 3) {
+    border-top: 0;
+  }
+
+  .item + .item {
+    border-left: 1px solid var(--rule);
+  }
+}

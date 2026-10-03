@@ -1,0 +1,145 @@
+.section {
+  padding-block: var(--section-space);
+}
+
+/* drop-shadow (not box-shadow) so the shadow follows the notched outline */
+.shadow {
+  filter: drop-shadow(0 24px 32px rgb(37 99 235 / 0.24)) drop-shadow(0 4px 8px rgb(15 23 42 / 0.1));
+}
+
+/*
+ * The ticket. Two radial-gradient masks punch half-circle notches where the
+ * stub tears off: on the left/right edges when stacked, top/bottom when side by side.
+ */
+.ticket {
+  --notch: 0.875rem;
+  --stub-size: 9.5rem;
+  --cut: #0000 var(--notch), #000 calc(var(--notch) + 0.5px);
+
+  display: grid;
+  grid-template-rows: auto var(--stub-size);
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(to bottom, rgb(255 255 255 / 0.1), transparent 45%),
+    var(--signal);
+  color: #fff;
+  -webkit-mask:
+    radial-gradient(circle at 0 calc(100% - var(--stub-size)), var(--cut)) left / 51% 100% no-repeat,
+    radial-gradient(circle at 100% calc(100% - var(--stub-size)), var(--cut)) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle at 0 calc(100% - var(--stub-size)), var(--cut)) left / 51% 100% no-repeat,
+    radial-gradient(circle at 100% calc(100% - var(--stub-size)), var(--cut)) right / 51% 100% no-repeat;
+}
+
+.main {
+  padding: var(--space-10) var(--space-6) var(--space-8);
+}
+
+.title {
+  max-width: 30rem;
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.032em;
+}
+
+.description {
+  max-width: 32rem;
+  margin-top: var(--space-4);
+  color: rgb(255 255 255 / 0.85);
+  font-size: var(--text-lead);
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+.action {
+  width: 100%;
+}
+
+.stub {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  background: rgb(30 64 175 / 0.35);
+  text-align: center;
+}
+
+/* Perforation */
+.stub::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: calc(var(--notch) + 0.5rem);
+  left: calc(var(--notch) + 0.5rem);
+  height: 2px;
+  background: repeating-linear-gradient(to right, rgb(255 255 255 / 0.45) 0 6px, transparent 6px 12px);
+}
+
+.stubLabel {
+  color: rgb(255 255 255 / 0.75);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.ticketId {
+  font-size: clamp(2.5rem, 2rem + 1.6vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.stubNote {
+  max-width: 13rem;
+  color: rgb(255 255 255 / 0.85);
+  font-size: var(--text-sm);
+}
+
+@media (min-width: 30rem) {
+  .action {
+    width: auto;
+  }
+}
+
+@media (min-width: 56rem) {
+  .ticket {
+    --stub-size: 17rem;
+
+    grid-template-columns: minmax(0, 1fr) var(--stub-size);
+    grid-template-rows: none;
+    -webkit-mask:
+      radial-gradient(circle at calc(100% - var(--stub-size)) 0, var(--cut)) top / 100% 51% no-repeat,
+      radial-gradient(circle at calc(100% - var(--stub-size)) 100%, var(--cut)) bottom / 100% 51% no-repeat;
+    mask:
+      radial-gradient(circle at calc(100% - var(--stub-size)) 0, var(--cut)) top / 100% 51% no-repeat,
+      radial-gradient(circle at calc(100% - var(--stub-size)) 100%, var(--cut)) bottom / 100% 51% no-repeat;
+  }
+
+  .main {
+    padding: var(--space-14);
+  }
+
+  .stub {
+    gap: var(--space-2);
+  }
+
+  .stub::before {
+    top: calc(var(--notch) + 0.5rem);
+    right: auto;
+    bottom: calc(var(--notch) + 0.5rem);
+    left: -1px;
+    width: 2px;
+    height: auto;
+    background: repeating-linear-gradient(to bottom, rgb(255 255 255 / 0.45) 0 6px, transparent 6px 12px);
+  }
+}
