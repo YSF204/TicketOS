@@ -1,0 +1,33 @@
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 40rem;
+  margin-bottom: var(--space-10);
+}
+
+.center {
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.title {
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.032em;
+}
+
+.description {
+  max-width: 34rem;
+  color: var(--ink-soft);
+  font-size: var(--text-lead);
+  line-height: 1.6;
+}
+
+@media (min-width: 64rem) {
+  .heading {
+    margin-bottom: var(--space-14);
+  }
+}

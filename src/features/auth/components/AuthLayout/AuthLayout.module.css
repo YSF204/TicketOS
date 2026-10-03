@@ -1,0 +1,148 @@
+/*
+ * Two panes: the form on clean paper, and the desk beside it where the
+ * product's artifacts sit. Below 64rem the desk is put away and the form
+ * gets the whole screen.
+ */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background: var(--paper);
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  height: var(--header-height);
+  padding-inline: var(--gutter);
+  border-bottom: 1px solid var(--rule);
+  background: rgb(255 255 255 / 0.88);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  backdrop-filter: blur(12px) saturate(1.4);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  border-radius: var(--radius);
+}
+
+.help {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2.5rem;
+  padding-inline: var(--space-3);
+  margin-inline-end: calc(var(--space-3) * -1);
+  border-radius: var(--radius);
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition-property: color, background-color;
+  transition-duration: var(--dur-fast);
+  transition-timing-function: var(--ease-out);
+}
+
+.body {
+  display: grid;
+  flex: 1;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding: var(--space-8) var(--gutter) var(--space-6);
+}
+
+.column {
+  width: 100%;
+  max-width: 27rem;
+  margin-inline: auto;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  width: 100%;
+  max-width: 27rem;
+  margin: auto auto 0;
+  color: var(--ink-faint);
+  font-size: var(--text-xs);
+}
+
+.footerLinks {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.footerLinks a {
+  color: var(--ink-meta);
+  transition-property: color;
+  transition-duration: var(--dur-fast);
+}
+
+.showcase {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .help:hover {
+    color: var(--ink);
+    background: var(--paper-sunk);
+  }
+
+  .footerLinks a:hover {
+    color: var(--ink);
+  }
+}
+
+@media (min-width: 40rem) {
+  .main {
+    padding-top: var(--space-14);
+  }
+}
+
+@media (min-width: 64rem) {
+  .body {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+  }
+
+  .main {
+    padding: var(--space-12) var(--space-10) var(--space-6);
+  }
+
+  .showcase {
+    position: sticky;
+    top: var(--header-height);
+    display: block;
+    height: calc(100dvh - var(--header-height));
+    min-height: 40rem;
+    overflow: hidden;
+    border-left: 1px solid var(--rule);
+    /* The desk: a dot grid in signal ink, lit from the top right */
+    background-color: var(--desk);
+    background-image:
+      radial-gradient(60% 50% at 85% 10%, rgb(37 99 235 / 0.08), transparent 70%),
+      radial-gradient(50% 45% at 10% 95%, rgb(79 70 229 / 0.06), transparent 70%),
+      radial-gradient(circle at 1px 1px, rgb(37 99 235 / 0.16) 1px, transparent 0);
+    background-size: auto, auto, 22px 22px;
+  }
+}
+
+@media (min-width: 90rem) {
+  .main {
+    padding-inline: var(--space-16);
+  }
+}

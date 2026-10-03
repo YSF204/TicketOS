@@ -18,6 +18,10 @@ export const createUser = async (user: RegistrationInput, passwordHash: string) 
     return createdUser;
 };
 
+export const markEmailVerified = async (userId: string) => {
+    await db.update(users).set({ emailVerified: true }).where(eq(users.id, userId));
+}
+
 export const findUserByEmail = async (email: string) => {
     const [user] = await db.select().from(users).where(eq(users.email, email)).limit(1);
     return user;

@@ -1,0 +1,92 @@
+.section {
+  padding-top: var(--section-space);
+}
+
+/* One sheet split into three columns, rather than three floating cards */
+.panel {
+  display: grid;
+  border: 1px solid var(--rule);
+  border-radius: 1.25rem;
+  background: var(--paper);
+  box-shadow: var(--lift-1);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+}
+
+.item + .item {
+  border-top: 1px solid var(--rule);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--icon-edge);
+  border-radius: 0.625rem;
+  background: var(--icon-wash);
+  color: var(--icon-ink);
+}
+
+.sticky {
+  --icon-wash: var(--sticky-wash);
+  --icon-ink: var(--sticky-text);
+  --icon-edge: var(--sticky);
+}
+
+.signal {
+  --icon-wash: var(--signal-wash);
+  --icon-ink: var(--signal);
+  --icon-edge: var(--signal-edge);
+}
+
+.agent {
+  --icon-wash: var(--agent-wash);
+  --icon-ink: var(--agent-ink);
+  --icon-edge: var(--agent-edge);
+}
+
+.before {
+  margin-top: var(--space-6);
+  color: var(--ink-meta);
+  font-size: var(--text-sm);
+}
+
+.before s {
+  text-decoration-color: rgb(225 29 72 / 0.55);
+  text-decoration-thickness: 1.5px;
+}
+
+.title {
+  margin-top: var(--space-2);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+.description {
+  margin-top: var(--space-2);
+  color: var(--ink-soft);
+  font-size: var(--text-body);
+  line-height: 1.6;
+}
+
+@media (min-width: 48rem) {
+  .panel {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .item {
+    padding: var(--space-8);
+  }
+
+  .item + .item {
+    border-top: 0;
+    border-left: 1px solid var(--rule);
+  }
+}

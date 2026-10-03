@@ -1,0 +1,136 @@
+/*
+ * TicketOS design tokens — source of truth: DESIGN.md ("Tactile Modern SaaS").
+ * Names describe the planning desk the product lives on: the desk, the paper
+ * on it, the ink, the ruled lines, sticky notes, and the signal blue.
+ */
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --desk: #f8fafc;
+  --paper: #ffffff;
+  --paper-sunk: #f1f5f9;
+  --paper-hover: #f8fafc;
+
+  /* Ink (text hierarchy) */
+  --ink: #0f172a;
+  --ink-soft: #475569;
+  --ink-meta: #64748b;
+  --ink-faint: #94a3b8;
+
+  /* Ruled lines (borders) */
+  --rule: #e2e8f0;
+  --rule-strong: #cbd5e1;
+
+  /* Signal blue — CTAs, selection, sync */
+  --signal: #2563eb;
+  --signal-strong: #1d4ed8;
+  --signal-deep: #1e40af;
+  --signal-wash: #eff6ff;
+  --signal-edge: #bfdbfe;
+  --signal-halo: rgb(37 99 235 / 0.12);
+
+  /* Sticky notes, reminders, triage */
+  --sticky: #fef08a;
+  --sticky-wash: #fef9c3;
+  --sticky-ink: #713f12;
+  --sticky-text: #a16207;
+  --sticky-edge: #ca8a04;
+
+  /* Done / velocity */
+  --done: #059669;
+  --done-ink: #047857;
+  --done-wash: #ecfdf5;
+  --done-edge: #a7f3d0;
+
+  /* Agent — AI processing */
+  --agent: #4f46e5;
+  --agent-ink: #4338ca;
+  --agent-wash: #eef2ff;
+  --agent-edge: #c7d2fe;
+
+  /* Alert — urgent, stop */
+  --alert: #e11d48;
+  --alert-ink: #be123c;
+  --alert-wash: #fff1f2;
+  --alert-edge: #fecdd3;
+
+  /* Night — the document assistant room */
+  --night: #0f172a;
+  --night-raised: #16213a;
+  --night-rule: rgb(255 255 255 / 0.08);
+  --night-ink: #f1f5f9;
+  --night-ink-soft: #a3b1c6;
+
+  /* Type */
+  --font-sans: 'Inter Variable', Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-hand: 'Kalam', 'Segoe Print', 'Bradley Hand', cursive;
+
+  --text-display: clamp(2.125rem, 1.15rem + 3.9vw, 4rem);
+  --text-h2: clamp(1.75rem, 1.1rem + 2.4vw, 2.75rem);
+  --text-h3: 1.125rem;
+  --text-lead: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-body: 0.9375rem;
+  --text-sm: 0.8125rem;
+  --text-xs: 0.75rem;
+  --text-2xs: 0.6875rem;
+
+  /* Space — 4px base, 8pt rhythm */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-14: 3.5rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-28: 7rem;
+
+  /* Layout */
+  --content-max: 75rem;
+  --gutter: 1rem;
+  --section-space: var(--space-16);
+  --header-height: 4rem;
+
+  /* Radius */
+  --radius-sm: 0.25rem;
+  --radius: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-pill: 9999px;
+
+  /* Elevation (DESIGN.md levels) */
+  --lift-1: 0 1px 3px rgb(15 23 42 / 0.04), 0 4px 12px rgb(15 23 42 / 0.03);
+  --lift-2: 0 4px 6px -1px rgb(15 23 42 / 0.05), 0 10px 20px -3px rgb(15 23 42 / 0.04);
+  --lift-3: 0 20px 25px -5px rgb(15 23 42 / 0.08), 0 8px 10px -6px rgb(15 23 42 / 0.04);
+  --lift-sticky: 0 1px 2px rgb(113 63 18 / 0.1), 0 4px 12px rgb(202 138 4 / 0.14);
+  --lift-primary: inset 0 1px 0 rgb(255 255 255 / 0.2), 0 2px 4px rgb(37 99 235 / 0.24);
+  --lift-primary-pressed: inset 0 1px 0 rgb(255 255 255 / 0.12), 0 1px 1px rgb(37 99 235 / 0.2);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-swap: cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast: 150ms;
+  --dur-base: 200ms;
+  --dur-slow: 300ms;
+  --dur-enter: 700ms;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --gutter: 1.5rem;
+    --section-space: var(--space-20);
+  }
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --section-space: var(--space-28);
+  }
+}

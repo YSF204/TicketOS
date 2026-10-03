@@ -1,0 +1,37 @@
+.avatar {
+  --avatar-size: 1.5rem;
+
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 50%;
+  background: var(--avatar-color);
+  color: #fff;
+  font-size: calc(var(--avatar-size) * 0.4);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+.signal { --avatar-color: var(--signal); }
+.agent { --avatar-color: var(--agent); }
+.done { --avatar-color: var(--done); }
+.amber { --avatar-color: #b45309; }
+.alert { --avatar-color: var(--alert); }
+.slate { --avatar-color: #334155; }
+.violet { --avatar-color: #7c3aed; }
+
+.stack {
+  display: inline-flex;
+}
+
+/* DESIGN.md: stacked assignees carry a 2px white ring */
+.stack > .avatar {
+  box-shadow: 0 0 0 2px var(--avatar-ring, var(--paper));
+}
+
+.stack > .avatar + .avatar {
+  margin-inline-start: calc(var(--avatar-size) * -0.3);
+}

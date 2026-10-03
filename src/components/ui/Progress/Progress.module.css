@@ -1,0 +1,56 @@
+.signal { --progress-color: var(--signal); }
+.done { --progress-color: var(--done); }
+.sticky { --progress-color: #eab308; }
+.agent { --progress-color: var(--agent); }
+.alert { --progress-color: var(--alert); }
+
+/* Bar */
+.bar {
+  --progress-height: 0.25rem;
+
+  position: relative;
+  overflow: hidden;
+  height: var(--progress-height);
+  border-radius: var(--radius-pill);
+  background: var(--progress-track, var(--paper-sunk));
+}
+
+.fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--progress-color);
+}
+
+/* Ring */
+.ring {
+  position: relative;
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+}
+
+.ring svg {
+  rotate: -90deg;
+}
+
+.track {
+  fill: none;
+  stroke: var(--progress-track, var(--paper-sunk));
+}
+
+.arc {
+  fill: none;
+  stroke: var(--progress-color);
+  stroke-linecap: round;
+}
+
+.label {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: var(--ring-label-size, 0.75rem);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
